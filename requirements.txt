@@ -1,3 +1,4 @@
 pytz
 python-dateutil
 jsonschema
+ujson==1.35

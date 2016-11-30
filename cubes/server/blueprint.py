@@ -103,6 +103,7 @@ def initialize_slicer(state):
         # Configure the application
         _store_option(config, "prettyprint", False, "bool")
         _store_option(config, "json_record_limit", 1000, "int")
+        _store_option(config, "use_ujson", False, "bool")
         _store_option(config, "hide_private_cuts", False, "bool")
         _store_option(config, "allow_cors_origin", None, "str")
         _store_option(config, "visualizer", None, "str")
@@ -148,7 +149,7 @@ def process_common_parameters():
 
     # Copy from the application context
     g.json_record_limit = current_app.slicer.json_record_limit
-
+    g.use_ujson = current_app.slicer.use_ujson
     if "prettyprint" in request.args:
         g.prettyprint = str_to_bool(request.args.get("prettyprint"))
     else:

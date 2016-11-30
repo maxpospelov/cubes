@@ -276,7 +276,11 @@ class SnowflakeBrowser(AggregationBrowser):
 
     def execute_statement(self, statement, label=None):
         """Execute the `statement`, optionally log it. Returns the result
-        cursor."""
+        cursor.
+        Also apply ugly limit over whole query after execution.
+        """
+        if g.use_ujson:
+            statement = sql.expression.alias(statement).select().limit(g.json_record_limit)
         self._log_statement(statement, label)
         return self.connectable.execute(statement)
 
