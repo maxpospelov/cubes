@@ -10,7 +10,7 @@ from ...errors import *
 from .mapper import SnowflakeMapper, DenormalizedMapper
 from .functions import get_aggregate_function, available_aggregate_functions
 from .query import QueryBuilder
-
+from flask import g
 import itertools
 import collections
 
