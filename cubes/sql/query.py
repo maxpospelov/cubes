@@ -392,6 +392,8 @@ class StarSchema(object):
                                  % (self.fact_name, label, str(e)))
             else:
                 self.fact_key = self.fact_key_column.name
+         
+        self.fact_key_column = self.fact_key_column.label(FACT_KEY_LABEL if fact_key=='id' else fact_key)
 
         # Rest of the initialization
         # --------------------------
